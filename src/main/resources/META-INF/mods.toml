@@ -1,0 +1,25 @@
+modLoader="javafml"
+license="LGPLv3"
+loaderVersion="[31,)"
+issueTrackerURL="https://github.com/Trinsdar/Traverse-Reforged/issues"
+
+[[mods]]
+modId="traverse"
+version="${version}"
+displayName="Traverse Reforged"
+displayURL="https://github.com/Trinsdar/Traverse-Reforged"
+credits="TerraformersMC for creating the fabric version"
+authors="Trinsdar, coderbot16, NeusFear, TerraformersMC"
+description='''A biome expansion mod that embraces the simplistic nature of Minecraft biomes'''
+[[dependencies.traverse]]
+modId="forge"
+mandatory=true
+versionRange="[40.1.73,)"
+ordering="AFTER"
+side="BOTH"
+[[dependencies.traverse]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.18.2,)"
+ordering="AFTER"
+side="BOTH"
