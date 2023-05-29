@@ -7,26 +7,49 @@ import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
 import com.terraformersmc.traverse.feature.placer.TraversePlacerTypes;
 import com.terraformersmc.traverse.item.TraverseBoatTypes;
 import com.terraformersmc.traverse.villager.TraverseVillagerTypes;
-import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 
-public class Traverse implements ModInitializer {
+@Mod(Traverse.MOD_ID + "_common")
+public class Traverse {
 	public static final String MOD_ID = "traverse";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	private static final TraverseConfigManager CONFIG_MANAGER = new TraverseConfigManager();
 
 	private static Boolean initialized = false;
+	public static ItemGroup itemGroup;
 	private static final ArrayList<Runnable> runnables = new ArrayList<>(1);
+
+	public Traverse(){
+		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+		eventBus.addListener(this::commonLoad);
+		eventBus.register(this);
+	}
+
+	@SubscribeEvent
+	public void onRegister(final RegistryEvent.Register<Block> event){
+		onInitialize();
+	}
+
+	private void commonLoad(FMLCommonSetupEvent event){
+		runnables.forEach(event::enqueueWork);
+	}
 
 	private static void register() {
 		TraverseBlocks.register();
@@ -39,26 +62,34 @@ public class Traverse implements ModInitializer {
 		// This must be after TraverseBiomes.init()
 		CONFIG_MANAGER.getBiomeConfig();
 
-		FabricItemGroupBuilder.create(new Identifier(MOD_ID, "items")).icon(() -> TraverseBlocks.FIR_SAPLING.asItem().getDefaultStack()).appendItems(stacks -> Registry.ITEM.forEach(item -> {
-			if (Registry.ITEM.getId(item).getNamespace().equals(MOD_ID)) {
-				item.appendStacks(item.getGroup(), (DefaultedList<ItemStack>) stacks);
+		itemGroup = new ItemGroup(MOD_ID + ".items") {
+
+			@Override
+			public void appendStacks(DefaultedList<ItemStack> stacks) {
+				super.appendStacks(stacks);
+				Registry.ITEM.forEach(item -> {
+					if (Registry.ITEM.getId(item).getNamespace().equals(MOD_ID)) {
+						item.appendStacks(item.getGroup(), stacks);
+					}
+				});
 			}
-		})).build();
+
+			@Override
+			public ItemStack createIcon() {
+				return new ItemStack(TraverseBlocks.FIR_SAPLING.asItem());
+			}
+		};
 	}
 
-	@Override
 	public void onInitialize() {
 		register();
 
-		if (!FabricLoader.getInstance().isModLoaded("traverse-worldgen")) {
+		if (!ModList.get().isLoaded("traverse_worldgen")) {
 			Traverse.LOGGER.info("No Traverse worldgen module present; Traverse biomes will not generate.");
 		}
 
 		// At this point Traverse is completely initialized.
 		initialized = true;
-		for (Runnable callback : runnables) {
-			callback.run();
-		}
 	}
 
 	public static void callbackWhenInitialized(Runnable callback) {

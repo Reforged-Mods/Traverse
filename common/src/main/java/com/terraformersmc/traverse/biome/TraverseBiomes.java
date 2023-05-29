@@ -10,6 +10,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.*;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -93,7 +94,9 @@ public class TraverseBiomes {
 
 	public static void register() {
 		for (RegistryKey<Biome> key : BIOMES.keySet()) {
-			BuiltinRegistries.add(BuiltinRegistries.BIOME, key, BIOMES.get(key));
+			Biome biome = BIOMES.get(key);
+			biome.setRegistryName(key.getValue());
+			ForgeRegistries.BIOMES.register(biome);
 			Traverse.LOGGER.debug("TraverseBiomes.register: '" + key.getValue() + "' received ID: " + BuiltinRegistries.BIOME.getRawId(BIOMES.get(key)));
 		}
 	}

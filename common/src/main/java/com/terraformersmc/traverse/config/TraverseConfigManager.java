@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.terraformersmc.traverse.Traverse;
-import net.fabricmc.loader.api.FabricLoader;
+import net.minecraftforge.fml.loading.FMLPaths;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,7 +19,7 @@ public class TraverseConfigManager {
 	private static final Gson GSON = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).setPrettyPrinting().create();
 
 	public TraverseConfigManager() {
-		Path configDirectory = FabricLoader.getInstance().getConfigDir().resolve(Traverse.MOD_ID);
+		Path configDirectory = FMLPaths.CONFIGDIR.get().resolve(Traverse.MOD_ID);
 
 		try {
 			Files.createDirectories(configDirectory);

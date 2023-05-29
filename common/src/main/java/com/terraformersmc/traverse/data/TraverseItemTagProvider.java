@@ -1,21 +1,24 @@
 package com.terraformersmc.traverse.data;
 
+import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.item.TraverseBoatTypes;
 import com.terraformersmc.traverse.tag.TraverseItemTags;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.server.BlockTagProvider;
+import net.minecraft.data.server.ItemTagProvider;
 import net.minecraft.tag.ItemTags;
+import net.minecraftforge.common.data.ExistingFileHelper;
 
-public class TraverseItemTagProvider extends FabricTagProvider.ItemTagProvider {
-	public TraverseItemTagProvider(FabricDataGenerator dataGenerator) {
-		super(dataGenerator);
+public class TraverseItemTagProvider extends ItemTagProvider {
+	public TraverseItemTagProvider(DataGenerator dataGenerator, BlockTagProvider provider, ExistingFileHelper helper) {
+		super(dataGenerator, provider, Traverse.MOD_ID, helper);
 	}
 
 	@Override
-	protected void generateTags() {
+	protected void configure() {
 		this.getOrCreateTagBuilder(ItemTags.BOATS)
-			.add(TraverseBoatTypes.fir.getItem());
+			.add(TraverseBoatTypes.fir.item());
 
 		this.getOrCreateTagBuilder(ItemTags.LEAVES)
 			.add(TraverseBlocks.BROWN_AUTUMNAL_LEAVES.asItem())

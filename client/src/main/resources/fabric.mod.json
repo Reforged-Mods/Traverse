@@ -8,7 +8,7 @@
   "icon": "assets/traverse/icon.png",
   "entrypoints": {
     "client": [
-      "com.terraformersmc.traverse.TraverseClient"
+      "com.terraformersmc.traverse.client.TraverseClient"
     ]
   },
   "mixins": [

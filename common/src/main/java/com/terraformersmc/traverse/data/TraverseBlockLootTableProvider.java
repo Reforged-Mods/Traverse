@@ -1,17 +1,13 @@
 package com.terraformersmc.traverse.data;
 
 import com.terraformersmc.traverse.block.TraverseBlocks;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.block.Block;
 import net.minecraft.data.server.BlockLootTableGenerator;
 
-public class TraverseBlockLootTableProvider extends FabricBlockLootTableProvider {
-	protected TraverseBlockLootTableProvider(FabricDataGenerator dataGenerator) {
-		super(dataGenerator);
-	}
+public class TraverseBlockLootTableProvider extends BlockLootTableGenerator {
 
 	@Override
-	protected void generateBlockLootTables() {
+	protected void addTables() {
 		// simple blocks
 		addDrop(TraverseBlocks.BROWN_AUTUMNAL_SAPLING);
 		addDrop(TraverseBlocks.FIR_BUTTON);
@@ -49,5 +45,10 @@ public class TraverseBlockLootTableProvider extends FabricBlockLootTableProvider
 		addDrop(TraverseBlocks.ORANGE_AUTUMNAL_LEAVES, leavesDrop(TraverseBlocks.ORANGE_AUTUMNAL_LEAVES, TraverseBlocks.ORANGE_AUTUMNAL_SAPLING, 0.05f, 0.0625f, 0.083333336f, 0.1f));
 		addDrop(TraverseBlocks.RED_AUTUMNAL_LEAVES, leavesDrop(TraverseBlocks.RED_AUTUMNAL_LEAVES, TraverseBlocks.RED_AUTUMNAL_SAPLING, 0.05f, 0.0625f, 0.083333336f, 0.1f));
 		addDrop(TraverseBlocks.YELLOW_AUTUMNAL_LEAVES, leavesDrop(TraverseBlocks.YELLOW_AUTUMNAL_LEAVES, TraverseBlocks.YELLOW_AUTUMNAL_SAPLING, 0.05f, 0.0625f, 0.083333336f, 0.1f));
+	}
+
+	@Override
+	protected Iterable<Block> getKnownBlocks() {
+		return TraverseBlocks.BLOCKS.values();
 	}
 }

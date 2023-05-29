@@ -1,21 +1,24 @@
 package com.terraformersmc.traverse.data;
 
+import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.biome.TraverseBiomes;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBiomeTags;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.server.BiomeTagProvider;
 import net.minecraft.tag.BiomeTags;
 import net.minecraft.tag.TagKey;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.data.ExistingFileHelper;
 
-public class TraverseBiomeTagProvider extends FabricTagProvider.DynamicRegistryTagProvider<Biome> {
-	public TraverseBiomeTagProvider(FabricDataGenerator dataGenerator) {
-		super(dataGenerator, BuiltinRegistries.BIOME.getKey(), "worldgen/biome", "Biome Tags");
+public class TraverseBiomeTagProvider extends BiomeTagProvider {
+	public TraverseBiomeTagProvider(DataGenerator dataGenerator, ExistingFileHelper helper) {
+		super(dataGenerator, Traverse.MOD_ID, helper);
 	}
 
 	@Override
-	protected void generateTags() {
+	protected void configure() {
 		/*
 		 * Vanilla biome categories
 		 */
@@ -31,20 +34,20 @@ public class TraverseBiomeTagProvider extends FabricTagProvider.DynamicRegistryT
 		/*
 		 * Conventional biome categories
 		 */
-		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.CLIMATE_TEMPERATE.id()))
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), new Identifier("forge", "is_temperate")))
 			.add(TraverseBiomes.AUTUMNAL_WOODS)
 			.add(TraverseBiomes.CONIFEROUS_FOREST)
 			.add(TraverseBiomes.FLATLANDS)
 			.add(TraverseBiomes.LUSH_SWAMP)
 			.add(TraverseBiomes.WOODLANDS);
 
-		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.DESERT.id()))
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), Tags.Biomes.IS_SANDY.id()))
 			.add(TraverseBiomes.DESERT_SHRUBLAND);
 
-		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.PLAINS.id()))
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), Tags.Biomes.IS_PLAINS.id()))
 			.add(TraverseBiomes.FLATLANDS);
 
-		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.IN_OVERWORLD.id()))
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), Tags.Biomes.IS_OVERWORLD.id()))
 			.add(TraverseBiomes.AUTUMNAL_WOODS)
 			.add(TraverseBiomes.CONIFEROUS_FOREST)
 			.add(TraverseBiomes.DESERT_SHRUBLAND)
@@ -53,13 +56,13 @@ public class TraverseBiomeTagProvider extends FabricTagProvider.DynamicRegistryT
 			.add(TraverseBiomes.SNOWY_CONIFEROUS_FOREST)
 			.add(TraverseBiomes.WOODLANDS);
 
-		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.SWAMP.id()))
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), Tags.Biomes.IS_SWAMP.id()))
 			.add(TraverseBiomes.LUSH_SWAMP);
 
-		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.TREE_CONIFEROUS.id()))
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), Tags.Biomes.IS_CONIFEROUS.id()))
 			.add(TraverseBiomes.CONIFEROUS_FOREST);
 
-		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.TREE_DECIDUOUS.id()))
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), new Identifier("forge", "is_deciduous")))
 			.add(TraverseBiomes.AUTUMNAL_WOODS)
 			.add(TraverseBiomes.LUSH_SWAMP)
 			.add(TraverseBiomes.WOODLANDS);

@@ -13,7 +13,7 @@ loom{
 	forge {
 		convertAccessWideners = true
 		extraAccessWideners.add("traverse.accesswidener")
-		mixinConfigs = ["mixins.traverse-common.json", "mixins.traverse-worldgen.json"]
+		mixinConfigs = ["mixins.traverse-common.json"]
 	}
 
 }
@@ -37,7 +37,6 @@ dependencies {
 
 	afterEvaluate {
 		subprojects.each {
-			testmodImplementation sourceSets.main.output
 			implementation project(path: "${it.name}", configuration: "namedElements")
 			include project("${it.name}:")
 		}
@@ -107,8 +106,8 @@ subprojects {
 		minecraft "com.mojang:minecraft:${project.minecraft_version}"
 		mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 
-		modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-		modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+		forge "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+		modImplementation ("com.github.Reforged-Mods:FabricBiomeApiReforged:${rootProject.fbapi_reforged_version}") //d7bc649383
 
 		//modImplementation "com.terraformersmc.terraform-api:terraform-biome-remapper-api-v1:${project.terraform_biome_remapper_api_version}"
 		modImplementation "com.github.Reforged-Mods.Terraform-Reforged:terraform-config-api-v1:${project.terraform_version}"

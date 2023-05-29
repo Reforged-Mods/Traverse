@@ -8,7 +8,7 @@
   "icon": "assets/traverse/icon.png",
   "entrypoints": {
     "main": [
-      "com.terraformersmc.traverse.TraverseWorldgen"
+      "com.terraformersmc.traverse.worldgen.TraverseWorldgen"
     ],
     "terrablender": [
       "com.terraformersmc.traverse.biomegen.TraverseTerraBlenderGeneration"

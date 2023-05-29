@@ -1,15 +1,26 @@
 package com.terraformersmc.traverse.data;
 
-import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import com.terraformersmc.traverse.Traverse;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.server.BlockTagProvider;
+import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
-public class TraverseDatagen implements DataGeneratorEntrypoint {
-	@Override
-	public void onInitializeDataGenerator(FabricDataGenerator dataGenerator) {
-		dataGenerator.addProvider(TraverseBiomeTagProvider::new);
-		dataGenerator.addProvider(TraverseBlockLootTableProvider::new);
-		dataGenerator.addProvider(TraverseBlockTagProvider::new);
-		dataGenerator.addProvider(TraverseItemTagProvider::new);
-		dataGenerator.addProvider(TraverseRecipeProvider::new);
+@Mod.EventBusSubscriber(modid = Traverse.MOD_ID + "_common", bus = Mod.EventBusSubscriber.Bus.MOD)
+public class TraverseDatagen {
+	public static void onInitializeDataGenerator(DataGenerator dataGenerator, ExistingFileHelper helper) {
+		dataGenerator.addProvider(new TraverseBiomeTagProvider(dataGenerator, helper));
+		dataGenerator.addProvider(new TraverseLootTableProvider(dataGenerator));
+		BlockTagProvider provider = new TraverseBlockTagProvider(dataGenerator, helper);
+		dataGenerator.addProvider(provider);
+		dataGenerator.addProvider(new TraverseItemTagProvider(dataGenerator, provider, helper));
+		dataGenerator.addProvider(new TraverseRecipeProvider(dataGenerator));
+	}
+
+	@SubscribeEvent
+	public static void onGatherDataEvent(GatherDataEvent event){
+		onInitializeDataGenerator(event.getGenerator(), event.getExistingFileHelper());
 	}
 }

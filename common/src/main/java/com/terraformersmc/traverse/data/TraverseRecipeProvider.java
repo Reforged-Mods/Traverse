@@ -1,12 +1,12 @@
 package com.terraformersmc.traverse.data;
 
+import com.terraformersmc.terraform.utils.TerraformRecipeProvider;
 import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.item.TraverseBoatTypes;
 import com.terraformersmc.traverse.tag.TraverseItemTags;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.recipe.Ingredient;
@@ -14,14 +14,14 @@ import net.minecraft.util.Identifier;
 
 import java.util.function.Consumer;
 
-public class TraverseRecipeProvider extends FabricRecipeProvider {
-	public TraverseRecipeProvider(FabricDataGenerator dataGenerator) {
+public class TraverseRecipeProvider extends TerraformRecipeProvider {
+	public TraverseRecipeProvider(DataGenerator dataGenerator) {
 		super(dataGenerator);
 	}
 
 	@Override
-	protected void generateRecipes(Consumer<RecipeJsonProvider> exporter) {
-		offerBoatRecipe(exporter, TraverseBoatTypes.fir.getItem(), TraverseBlocks.FIR_PLANKS);
+	protected void generate(Consumer<RecipeJsonProvider> exporter) {
+		offerBoatRecipe(exporter, TraverseBoatTypes.fir.item(), TraverseBlocks.FIR_PLANKS);
 
 		offerSingleOutputShapelessRecipe(exporter, TraverseBlocks.FIR_BUTTON, TraverseBlocks.FIR_PLANKS, "wooden_button");
 

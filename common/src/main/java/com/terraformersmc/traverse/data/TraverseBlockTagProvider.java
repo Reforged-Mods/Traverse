@@ -1,19 +1,21 @@
 package com.terraformersmc.traverse.data;
 
+import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.tag.TraverseBlockTags;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.server.BlockTagProvider;
 import net.minecraft.tag.BlockTags;
+import net.minecraftforge.common.data.ExistingFileHelper;
 
-public class TraverseBlockTagProvider extends FabricTagProvider.BlockTagProvider {
-	public TraverseBlockTagProvider(FabricDataGenerator dataGenerator) {
-		super(dataGenerator);
+public class TraverseBlockTagProvider extends BlockTagProvider {
+	public TraverseBlockTagProvider(DataGenerator dataGenerator, ExistingFileHelper helper) {
+		super(dataGenerator, Traverse.MOD_ID, helper);
 	}
 
 	@Override
-	protected void generateTags() {
+	protected void configure() {
 		this.getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
 			.add(TraverseBlocks.FIR_FENCE_GATE);
 
