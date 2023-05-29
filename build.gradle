@@ -107,7 +107,6 @@ subprojects {
 		mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 
 		forge "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-		modImplementation ("com.github.Reforged-Mods:FabricBiomeApiReforged:${rootProject.fbapi_reforged_version}") //d7bc649383
 
 		//modImplementation "com.terraformersmc.terraform-api:terraform-biome-remapper-api-v1:${project.terraform_biome_remapper_api_version}"
 		modImplementation "com.github.Reforged-Mods.Terraform-Reforged:terraform-config-api-v1:${project.terraform_version}"
