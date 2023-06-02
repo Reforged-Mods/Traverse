@@ -8,11 +8,11 @@ Traverse aims to expand upon, but not replace or overshadow, Minecraft biomes. T
 </p>
 
 <h5 align="center">
-Traverse requires <a href="https://fabricmc.net/use/">Fabric Loader</a> and <a href="https://www.curseforge.com/minecraft/mc-mods/fabric-api">Fabric API</a> and the latest 1.18.2 version requires <a href="https://www.curseforge.com/minecraft/mc-mods/terrablender-fabric">Terrablender</a>
+Traverse requires <a href="https://fabricmc.net/use/">Fabric Loader</a> and <a href="https://www.curseforge.com/minecraft/mc-mods/fabric-api">Fabric API</a> and the latest 1.18.2 version requires <a href="https://www.curseforge.com/minecraft/mc-mods/terrablender-forge">Terrablender</a>
 </h5>
 
 <h5 align="center">
-Join the Terraformers team discord for support or to chat about the mods: <a href="https://discord.gg/jEGF5fb">https://discord.gg/jEGF5fb</a>
+Join my discord for support or to chat about the mods: <a href="https://discord.gg/UVSD2VQpvS">https://discord.gg/UVSD2VQpvS</a>
 </h5>
 
 <h5 align="center">
