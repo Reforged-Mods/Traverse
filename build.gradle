@@ -8,15 +8,6 @@ plugins {
 
 apply from: 'https://raw.githubusercontent.com/Reforged-Mods/GradleScripts/2.5-arch-loom/ferry.gradle'
 
-loom{
-	accessWidenerPath = file("src/main/resources/traverse.accesswidener")
-	forge {
-		convertAccessWideners = true
-		extraAccessWideners.add("traverse.accesswidener")
-		mixinConfigs = ["mixins.traverse-common.json"]
-	}
-
-}
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"

@@ -14,7 +14,7 @@ description='''A biome expansion mod that embraces the simplistic nature of Mine
 [[dependencies.traverse]]
 modId="forge"
 mandatory=true
-versionRange="[40.1.73,)"
+versionRange="[40.2.3,)"
 ordering="AFTER"
 side="BOTH"
 [[dependencies.traverse]]

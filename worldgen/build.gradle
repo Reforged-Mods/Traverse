@@ -2,7 +2,10 @@ archivesBaseName = "traverse-worldgen"
 
 loom {
 	accessWidenerPath = file("src/main/resources/traverse-worldgen.accesswidener")
-
+	forge {
+		convertAccessWideners = true
+		extraAccessWideners.add("traverse-worldgen.accesswidener")
+	}
 }
 
 dependencies {
