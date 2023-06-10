@@ -10,7 +10,7 @@ pluginManagement {
 	}
 }
 
-rootProject.name = "traverse"
+rootProject.name = "traverse-forge"
 include "client"
 include "common"
 include "worldgen"
