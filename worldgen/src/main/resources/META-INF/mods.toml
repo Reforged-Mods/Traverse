@@ -26,6 +26,6 @@ side="BOTH"
 [[dependencies.traverse_worldgen]]
 modId="terrablender"
 mandatory=true
-versionRange="[2.2.0.168,)"
+versionRange="[2.0.1.128,)"
 ordering="AFTER"
 side="BOTH"
