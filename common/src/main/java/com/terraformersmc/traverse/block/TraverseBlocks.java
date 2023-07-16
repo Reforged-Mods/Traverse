@@ -1,10 +1,7 @@
 package com.terraformersmc.traverse.block;
 
-import com.terraformersmc.terraform.leaves.ComposterRecipes;
 import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
-import com.terraformersmc.terraform.tree.block.TerraformSaplingBlock;
-import com.terraformersmc.terraform.utils.TerraformBlockSettings;
 import com.terraformersmc.terraform.utils.TerraformFuelRegistry;
 import com.terraformersmc.terraform.utils.mixin.FireBlockAccessor;
 import com.terraformersmc.terraform.wood.block.*;
@@ -13,10 +10,7 @@ import com.terraformersmc.traverse.block.sapling.TraverseSaplingGenerator;
 import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.SignItem;
+import net.minecraft.item.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -24,22 +18,18 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class TraverseBlocks {
+	public static final Block RED_AUTUMNAL_LEAVES = withItem("red_autumnal_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).mapColor(MapColor.TERRACOTTA_RED).allowsSpawning(TraverseBlocks::canSpawnOnLeaves).suffocates(TraverseBlocks::never).blockVision(TraverseBlocks::never)), ItemGroup.DECORATIONS);
+	public static final Block RED_AUTUMNAL_SAPLING = withItem("red_autumnal_sapling", new SaplingBlock(new TraverseSaplingGenerator(() -> TraverseConfiguredFeatures.RED_AUTUMNAL_TREE), SaplingBlock.Settings.copy(Blocks.OAK_SAPLING).mapColor(MapColor.TERRACOTTA_RED)), ItemGroup.DECORATIONS);
+	public static final Block BROWN_AUTUMNAL_LEAVES = withItem("brown_autumnal_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).mapColor(MapColor.TERRACOTTA_BROWN).allowsSpawning(TraverseBlocks::canSpawnOnLeaves).suffocates(TraverseBlocks::never).blockVision(TraverseBlocks::never)), ItemGroup.DECORATIONS);
+	public static final Block BROWN_AUTUMNAL_SAPLING = withItem("brown_autumnal_sapling", new SaplingBlock(new TraverseSaplingGenerator(() -> TraverseConfiguredFeatures.BROWN_AUTUMNAL_TREE), SaplingBlock.Settings.copy(Blocks.OAK_SAPLING).mapColor(MapColor.TERRACOTTA_BROWN)), ItemGroup.DECORATIONS);
+	public static final Block ORANGE_AUTUMNAL_LEAVES = withItem("orange_autumnal_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).mapColor(MapColor.TERRACOTTA_ORANGE).allowsSpawning(TraverseBlocks::canSpawnOnLeaves).suffocates(TraverseBlocks::never).blockVision(TraverseBlocks::never)), ItemGroup.DECORATIONS);
+	public static final Block ORANGE_AUTUMNAL_SAPLING = withItem("orange_autumnal_sapling", new SaplingBlock(new TraverseSaplingGenerator(() -> TraverseConfiguredFeatures.ORANGE_AUTUMNAL_TREE), SaplingBlock.Settings.copy(Blocks.OAK_SAPLING).mapColor(MapColor.TERRACOTTA_ORANGE)), ItemGroup.DECORATIONS);
+	public static final Block YELLOW_AUTUMNAL_LEAVES = withItem("yellow_autumnal_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).mapColor(MapColor.TERRACOTTA_YELLOW).allowsSpawning(TraverseBlocks::canSpawnOnLeaves).suffocates(TraverseBlocks::never).blockVision(TraverseBlocks::never)), ItemGroup.DECORATIONS);
+	public static final Block YELLOW_AUTUMNAL_SAPLING = withItem("yellow_autumnal_sapling", new SaplingBlock(new TraverseSaplingGenerator(() -> TraverseConfiguredFeatures.YELLOW_AUTUMNAL_TREE), SaplingBlock.Settings.copy(Blocks.OAK_SAPLING).mapColor(MapColor.TERRACOTTA_YELLOW)), ItemGroup.DECORATIONS);
 
 	private static final Map<Identifier, BlockItem> ITEMS = new HashMap<>();
 	public static final Map<Identifier, Block> BLOCKS = new HashMap<>();
-
-	public static final Block RED_AUTUMNAL_LEAVES = add("red_autumnal_leaves", new LeavesBlock(TerraformBlockSettings.copyOf(Blocks.OAK_LEAVES).allowsSpawning(TraverseBlocks::canSpawnOnLeaves).suffocates(TraverseBlocks::never).blockVision(TraverseBlocks::never)), ItemGroup.DECORATIONS);
-	public static final Block RED_AUTUMNAL_SAPLING = add("red_autumnal_sapling", new TerraformSaplingBlock(new TraverseSaplingGenerator(() -> TraverseConfiguredFeatures.RED_AUTUMNAL_TREE)), ItemGroup.DECORATIONS);
-	public static final Block BROWN_AUTUMNAL_LEAVES = add("brown_autumnal_leaves", new LeavesBlock(TerraformBlockSettings.copyOf(Blocks.OAK_LEAVES).allowsSpawning(TraverseBlocks::canSpawnOnLeaves).suffocates(TraverseBlocks::never).blockVision(TraverseBlocks::never)), ItemGroup.DECORATIONS);
-	public static final Block BROWN_AUTUMNAL_SAPLING = add("brown_autumnal_sapling", new TerraformSaplingBlock(new TraverseSaplingGenerator(() -> TraverseConfiguredFeatures.BROWN_AUTUMNAL_TREE)), ItemGroup.DECORATIONS);
-	public static final Block ORANGE_AUTUMNAL_LEAVES = add("orange_autumnal_leaves", new LeavesBlock(TerraformBlockSettings.copyOf(Blocks.OAK_LEAVES).allowsSpawning(TraverseBlocks::canSpawnOnLeaves).suffocates(TraverseBlocks::never).blockVision(TraverseBlocks::never)), ItemGroup.DECORATIONS);
-	public static final Block ORANGE_AUTUMNAL_SAPLING = add("orange_autumnal_sapling", new TerraformSaplingBlock(new TraverseSaplingGenerator(() -> TraverseConfiguredFeatures.ORANGE_AUTUMNAL_TREE)), ItemGroup.DECORATIONS);
-	public static final Block YELLOW_AUTUMNAL_LEAVES = add("yellow_autumnal_leaves", new LeavesBlock(TerraformBlockSettings.copyOf(Blocks.OAK_LEAVES).allowsSpawning(TraverseBlocks::canSpawnOnLeaves).suffocates(TraverseBlocks::never).blockVision(TraverseBlocks::never)), ItemGroup.DECORATIONS);
-	public static final Block YELLOW_AUTUMNAL_SAPLING = add("yellow_autumnal_sapling", new TerraformSaplingBlock(new TraverseSaplingGenerator(() -> TraverseConfiguredFeatures.YELLOW_AUTUMNAL_TREE)), ItemGroup.DECORATIONS);
 
 	public static final Block FIR_PLANKS = add("fir_planks", new Block(TerraformBlockSettings.copyOf(Blocks.OAK_PLANKS)), ItemGroup.BUILDING_BLOCKS);
 	public static final Block FIR_SAPLING = add("fir_sapling", new TerraformSaplingBlock(new TraverseSaplingGenerator(() -> TraverseConfiguredFeatures.FIR_TREE)), ItemGroup.DECORATIONS);
@@ -68,49 +58,40 @@ public class TraverseBlocks {
 	public static final Block POTTED_YELLOW_AUTUMNAL_SAPLING = add("potted_yellow_autumnal_sapling", new FlowerPotBlock(YELLOW_AUTUMNAL_SAPLING, TerraformBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
 	public static final Block POTTED_FIR_SAPLING = add("potted_fir_sapling", new FlowerPotBlock(FIR_SAPLING, TerraformBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
 
-	private static <B extends Block> B add(String name, B block, ItemGroup tab) {
-		return add(name, block, new BlockItem(block, new Item.Settings().group(tab)));
-	}
+	private static <B extends Block> B withItem(String name, B block, ItemGroup tab) {
+		TraverseItems.add(name, new BlockItem(block, new Item.Settings().group(tab)));
 
-	private static <B extends Block> B add(String name, B block, BlockItem item) {
-		add(name, block);
-		if (item != null) {
-			item.appendBlocks(Item.BLOCK_ITEMS, item);
-			ITEMS.put(new Identifier(Traverse.MOD_ID, name), item);
-			ComposterRecipes.registerCompostableBlock(block);
-		}
-		return block;
+		return add(name, block);
 	}
 
 	private static <B extends Block> B add(String name, B block) {
-		BLOCKS.put(new Identifier(Traverse.MOD_ID, name), block);
+		Registry.register(Registry.BLOCK, Identifier.of(Traverse.MOD_ID, name), block);
+
 		return block;
 	}
 
-	private static <I extends BlockItem> I add(String name, I item) {
-		item.appendBlocks(Item.BLOCK_ITEMS, item);
-		ITEMS.put(new Identifier(Traverse.MOD_ID, name), item);
-		return item;
-	}
-
 	public static void register() {
-		for (Identifier id : ITEMS.keySet()) {
-			Item item = ITEMS.get(id);
-			item.setRegistryName(id);
-			ForgeRegistries.ITEMS.register(item);
-		}
-		for (Identifier id : BLOCKS.keySet()) {
-			Block block = BLOCKS.get(id);
-			block.setRegistryName(id);
-			ForgeRegistries.BLOCKS.register(block);
-		}
-		addFuels();
+		addCompostables();
 		addFlammables();
+		addFuels();
+		addStrippables();
 	}
 
-	private static void addFuels() {
-		TerraformFuelRegistry.addFuel(FIR_FENCE, 300);
-		TerraformFuelRegistry.addFuel(FIR_FENCE_GATE, 300);
+	private static void addCompostables() {
+		CompostingChanceRegistry compostingRegistry = CompostingChanceRegistry.INSTANCE;
+		float LEAVES_CHANCE = compostingRegistry.get(Items.OAK_LEAVES);
+		float SAPLING_CHANCE = compostingRegistry.get(Items.OAK_SAPLING);
+
+		compostingRegistry.add(FIR_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(FIR_SAPLING, SAPLING_CHANCE);
+		compostingRegistry.add(BROWN_AUTUMNAL_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(BROWN_AUTUMNAL_SAPLING, SAPLING_CHANCE);
+		compostingRegistry.add(ORANGE_AUTUMNAL_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(ORANGE_AUTUMNAL_SAPLING, SAPLING_CHANCE);
+		compostingRegistry.add(RED_AUTUMNAL_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(RED_AUTUMNAL_SAPLING, SAPLING_CHANCE);
+		compostingRegistry.add(YELLOW_AUTUMNAL_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(YELLOW_AUTUMNAL_SAPLING, SAPLING_CHANCE);
 	}
 
 	private static void addFlammables() {
@@ -129,6 +110,18 @@ public class TraverseBlocks {
 		block.invokeRegisterFlammableBlock(BROWN_AUTUMNAL_LEAVES, 30, 60);
 		block.invokeRegisterFlammableBlock(ORANGE_AUTUMNAL_LEAVES, 30, 60);
 		block.invokeRegisterFlammableBlock(YELLOW_AUTUMNAL_LEAVES, 30, 60);
+	}
+
+	private static void addFuels() {
+		FuelRegistry fuelRegistry = FuelRegistry.INSTANCE;
+
+		fuelRegistry.add(FIR_FENCE, 300);
+		fuelRegistry.add(FIR_FENCE_GATE, 300);
+	}
+
+	private static void addStrippables() {
+		StrippableBlockRegistry.register(FIR_LOG, STRIPPED_FIR_LOG);
+		StrippableBlockRegistry.register(FIR_WOOD, STRIPPED_FIR_WOOD);
 	}
 
 	// Todo: fix when Fabric API supports `of(Material material, Function<BlockState, MapColor> mapColor)`

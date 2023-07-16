@@ -13,12 +13,11 @@ import net.minecraft.world.gen.feature.OceanPlacedFeatures;
 import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class LushSwampBiomes {
-
 	static final Biome LUSH_SWAMP = new Biome.Builder()
 			.precipitation(Biome.Precipitation.RAIN)
 			.generationSettings(generationSettings())
 			.spawnSettings(spawnSettings())
-			.category(Biome.Category.SWAMP)
+			.precipitation(Biome.Precipitation.RAIN)
 			.temperature(0.8F)
 			.downfall(0.9F)
 			.effects(TraverseBiomes.createDefaultBiomeEffects()
@@ -34,6 +33,7 @@ public class LushSwampBiomes {
 		addBasicFeatures(builder);
 		DefaultBiomeFeatures.addDefaultOres(builder);
 		DefaultBiomeFeatures.addClayDisk(builder);
+		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraversePlacedFeatures.SWAMP_FUNGUS);
 		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraversePlacedFeatures.LUSH_SWAMP_TREES);
 		DefaultBiomeFeatures.addSwampFeatures(builder);
 		DefaultBiomeFeatures.addDefaultMushrooms(builder);
@@ -42,9 +42,10 @@ public class LushSwampBiomes {
 		return builder.build();
 	}
 
-	private static SpawnSettings spawnSettings(){
+	private static SpawnSettings spawnSettings() {
 		SpawnSettings.Builder builder = TraverseBiomes.createDefaultSpawnSettings();
 		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.SLIME, 1, 1, 1));
+		builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.FROG, 10, 2, 5));
 		return builder.build();
 	}
 }

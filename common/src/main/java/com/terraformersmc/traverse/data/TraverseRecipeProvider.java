@@ -21,7 +21,8 @@ public class TraverseRecipeProvider extends TerraformRecipeProvider {
 
 	@Override
 	protected void generate(Consumer<RecipeJsonProvider> exporter) {
-		offerBoatRecipe(exporter, TraverseBoatTypes.fir.item(), TraverseBlocks.FIR_PLANKS);
+		offerBoatRecipe(exporter, TraverseBoatTypes.fir.getItem(), TraverseBlocks.FIR_PLANKS);
+		offerChestBoatRecipe(exporter, TraverseBoatTypes.fir.getChestItem(), TraverseBoatTypes.fir.getItem());
 
 		offerSingleOutputShapelessRecipe(exporter, TraverseBlocks.FIR_BUTTON, TraverseBlocks.FIR_PLANKS, "wooden_button");
 
@@ -39,7 +40,7 @@ public class TraverseRecipeProvider extends TerraformRecipeProvider {
 
 		offerPlanksRecipe(exporter, TraverseBlocks.FIR_PLANKS, TraverseItemTags.FIR_LOGS);
 
-		createPressurePlateRecipe(exporter, TraverseBlocks.FIR_PRESSURE_PLATE, TraverseBlocks.FIR_PLANKS);
+		offerPressurePlateRecipe(exporter, TraverseBlocks.FIR_PRESSURE_PLATE, TraverseBlocks.FIR_PLANKS);
 
 		createSignRecipe(TraverseBlocks.FIR_SIGN, Ingredient.ofItems(TraverseBlocks.FIR_PLANKS))
 			.criterion("has_planks", InventoryChangedCriterion.Conditions.items(TraverseBlocks.FIR_PLANKS))

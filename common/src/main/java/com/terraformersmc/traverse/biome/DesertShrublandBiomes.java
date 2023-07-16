@@ -13,16 +13,15 @@ import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class DesertShrublandBiomes {
 	static final Biome DESERT_SHRUBLAND = new Biome.Builder()
-			.precipitation(Biome.Precipitation.NONE)
 			.generationSettings(generationSettings())
 			.spawnSettings(spawnSettings())
+			.precipitation(Biome.Precipitation.NONE)
+			.temperature(2.0F)
+			.downfall(0.0F)
 			.effects(TraverseBiomes.createDefaultBiomeEffects()
 					.grassColor(0xBFB755)
 					.foliageColor(0xAEA42A).build()
 			)
-			.category(Biome.Category.DESERT)
-			.temperature(2.0F)
-			.downfall(0.0F)
 			.build();
 
 	private static GenerationSettings generationSettings(){

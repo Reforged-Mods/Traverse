@@ -6,6 +6,7 @@ import com.terraformersmc.traverse.config.TraverseConfigManager;
 import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
 import com.terraformersmc.traverse.feature.placer.TraversePlacerTypes;
 import com.terraformersmc.traverse.item.TraverseBoatTypes;
+import com.terraformersmc.traverse.item.TraverseItems;
 import com.terraformersmc.traverse.villager.TraverseVillagerTypes;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemGroup;
@@ -53,6 +54,7 @@ public class Traverse {
 
 	private static void register() {
 		TraverseBlocks.register();
+		TraverseItems.register();
 		TraverseBoatTypes.register();
 		TraversePlacedFeatures.init();
 		TraverseBiomes.register();

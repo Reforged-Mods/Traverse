@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.terraformersmc.traverse.Traverse;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraftforge.fml.loading.FMLPaths;
 
 import java.io.IOException;

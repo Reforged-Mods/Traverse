@@ -13,10 +13,9 @@ import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class WoodlandsBiomes {
 	static final Biome WOODLANDS = new Biome.Builder()
-			.precipitation(Biome.Precipitation.RAIN)
 			.generationSettings(generationSettings())
 			.spawnSettings(spawnSettings())
-			.category(Biome.Category.FOREST)
+			.precipitation(Biome.Precipitation.RAIN)
 			.temperature(0.8F)
 			.downfall(0.4F)
 			.effects(TraverseBiomes.createDefaultBiomeEffects()

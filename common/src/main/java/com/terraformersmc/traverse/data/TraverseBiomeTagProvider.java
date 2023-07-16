@@ -22,6 +22,9 @@ public class TraverseBiomeTagProvider extends BiomeTagProvider {
 		/*
 		 * Vanilla biome categories
 		 */
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.ALLOWS_SURFACE_SLIME_SPAWNS.id()))
+			.add(TraverseBiomes.LUSH_SWAMP);
+
 		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.IS_FOREST.id()))
 			.add(TraverseBiomes.AUTUMNAL_WOODS)
 			.add(TraverseBiomes.CONIFEROUS_FOREST)
@@ -29,6 +32,15 @@ public class TraverseBiomeTagProvider extends BiomeTagProvider {
 
 		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.IS_TAIGA.id()))
 			.add(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
+
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.SPAWNS_COLD_VARIANT_FROGS.id()))
+			.add(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
+
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.SPAWNS_WARM_VARIANT_FROGS.id()))
+			.add(TraverseBiomes.DESERT_SHRUBLAND);
+
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.WATER_ON_MAP_OUTLINES.id()))
+			.add(TraverseBiomes.LUSH_SWAMP);
 
 
 		/*
@@ -55,6 +67,9 @@ public class TraverseBiomeTagProvider extends BiomeTagProvider {
 			.add(TraverseBiomes.LUSH_SWAMP)
 			.add(TraverseBiomes.SNOWY_CONIFEROUS_FOREST)
 			.add(TraverseBiomes.WOODLANDS);
+
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.SNOWY.id()))
+			.add(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
 
 		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), Tags.Biomes.IS_SWAMP.id()))
 			.add(TraverseBiomes.LUSH_SWAMP);

@@ -32,7 +32,7 @@ public class TraverseClient {
 	}
 
 	private static void registerEntityRenderers() {
-		TerraformBoatClientHelper.registerModelLayer(new Identifier(Traverse.MOD_ID, "fir"));
+		TerraformBoatClientHelper.registerModelLayers(new Identifier(Traverse.MOD_ID, "fir"));
 	}
 
 	private static void registerRenderLayers() {

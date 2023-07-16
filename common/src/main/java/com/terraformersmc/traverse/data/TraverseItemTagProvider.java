@@ -20,6 +20,9 @@ public class TraverseItemTagProvider extends ItemTagProvider {
 		this.getOrCreateTagBuilder(ItemTags.BOATS)
 			.add(TraverseBoatTypes.fir.item());
 
+		this.getOrCreateTagBuilder(ItemTags.CHEST_BOATS)
+			.add(TraverseBoatTypes.fir.getChestItem());
+
 		this.getOrCreateTagBuilder(ItemTags.LEAVES)
 			.add(TraverseBlocks.BROWN_AUTUMNAL_LEAVES.asItem())
 			.add(TraverseBlocks.RED_AUTUMNAL_LEAVES.asItem())
@@ -64,6 +67,7 @@ public class TraverseItemTagProvider extends ItemTagProvider {
 		this.getOrCreateTagBuilder(ItemTags.WOODEN_TRAPDOORS)
 			.add(TraverseBlocks.FIR_TRAPDOOR.asItem());
 
+
 		this.getOrCreateTagBuilder(TraverseItemTags.FIR_LOGS)
 			.add(TraverseBlocks.FIR_LOG.asItem())
 			.add(TraverseBlocks.FIR_WOOD.asItem())
@@ -72,5 +76,11 @@ public class TraverseItemTagProvider extends ItemTagProvider {
 
 		this.getOrCreateTagBuilder(TraverseItemTags.PLANKS_THAT_BURN)
 			.add(TraverseBlocks.FIR_PLANKS.asItem());
+
+		this.getOrCreateTagBuilder(TraverseItemTags.STRIPPED_LOGS)
+			.add(TraverseBlocks.STRIPPED_FIR_LOG.asItem());
+
+		this.getOrCreateTagBuilder(TraverseItemTags.STRIPPED_WOOD)
+			.add(TraverseBlocks.STRIPPED_FIR_WOOD.asItem());
 	}
 }

@@ -13,29 +13,27 @@ import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class ConiferousForestBiomes {
 	static final Biome CONIFEROUS_FOREST = new Biome.Builder()
-			.precipitation(Biome.Precipitation.RAIN)
 			.generationSettings(generationSettings(false))
 			.spawnSettings(spawnSettings())
-			.category(Biome.Category.FOREST)
+			.precipitation(Biome.Precipitation.RAIN)
+			.temperature(0.6F)
+			.downfall(0.9F)
 			.effects(TraverseBiomes.createDefaultBiomeEffects()
 					.grassColor(0x338235)
 					.foliageColor(0x338235).build()
 			)
-			.temperature(0.6F)
-			.downfall(0.9F)
 			.build();
 
 	static final Biome SNOWY_CONIFEROUS_FOREST = new Biome.Builder()
-			.precipitation(Biome.Precipitation.SNOW)
 			.generationSettings(generationSettings(true))
 			.spawnSettings(spawnSettings())
-			.category(Biome.Category.TAIGA)
+			.precipitation(Biome.Precipitation.SNOW)
+			.temperature(-0.5F)
+			.downfall(0.9F)
 			.effects(TraverseBiomes.createDefaultBiomeEffects()
 					.grassColor(0x338251)
 					.foliageColor(0x338251).build()
 			)
-			.temperature(-0.5F)
-			.downfall(0.9F)
 			.build();
 
 	private static GenerationSettings generationSettings(boolean snowy){
