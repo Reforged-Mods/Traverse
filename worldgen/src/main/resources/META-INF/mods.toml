@@ -1,6 +1,6 @@
 modLoader="javafml"
 license="LGPLv3"
-loaderVersion="[40,)"
+loaderVersion="[43,)"
 issueTrackerURL="https://github.com/Trinsdar/Traverse-Reforged/issues"
 
 [[mods]]
@@ -14,18 +14,18 @@ description='''A biome expansion mod that embraces the simplistic nature of Mine
 [[dependencies.traverse_worldgen]]
 modId="forge"
 mandatory=true
-versionRange="[40.1.0,)"
+versionRange="[43.2.0,)"
 ordering="AFTER"
 side="BOTH"
 [[dependencies.traverse_worldgen]]
 modId="minecraft"
 mandatory=true
-versionRange="[1.18.2,)"
+versionRange="[1.19.2,)"
 ordering="AFTER"
 side="BOTH"
 [[dependencies.traverse_worldgen]]
 modId="terrablender"
 mandatory=true
-versionRange="[1.1.0,)"
+versionRange="[2.2.0.168,)"
 ordering="AFTER"
 side="BOTH"
