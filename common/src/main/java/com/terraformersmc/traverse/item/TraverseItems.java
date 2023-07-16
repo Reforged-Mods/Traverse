@@ -4,6 +4,7 @@ import com.terraformersmc.traverse.Traverse;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class TraverseItems {
 	public static <I extends Item> I add(String name, I item) {
@@ -11,7 +12,8 @@ public class TraverseItems {
 			blockItem.appendBlocks(Item.BLOCK_ITEMS, item);
 		}
 
-		return Registry.register(Registry.ITEM, Identifier.of(Traverse.MOD_ID, name), item);
+		ForgeRegistries.ITEMS.register(Identifier.of(Traverse.MOD_ID, name), item);
+		return item;
 	}
 
 	public static void register() {	}

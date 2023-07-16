@@ -16,7 +16,7 @@ import java.util.function.Consumer;
 
 import static com.terraformersmc.traverse.biome.TraverseBiomes.*;
 
-public class TraverseTerraBlenderGeneration extends Region implements Runnable, TerraBlenderApi {
+public class TraverseTerraBlenderGeneration extends Region implements Runnable {
 	TraverseBiomeConfig BIOME_CONFIG;
 
 	public TraverseTerraBlenderGeneration() {

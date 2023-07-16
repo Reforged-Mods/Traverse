@@ -6,10 +6,13 @@ import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.item.TraverseBoatTypes;
 import com.terraformersmc.traverse.tag.TraverseItemTags;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
 import java.util.function.Consumer;
@@ -22,7 +25,7 @@ public class TraverseRecipeProvider extends TerraformRecipeProvider {
 	@Override
 	protected void generate(Consumer<RecipeJsonProvider> exporter) {
 		offerBoatRecipe(exporter, TraverseBoatTypes.fir.getItem(), TraverseBlocks.FIR_PLANKS);
-		offerChestBoatRecipe(exporter, TraverseBoatTypes.fir.getChestItem(), TraverseBoatTypes.fir.getItem());
+		ShapelessRecipeJsonBuilder.create(TraverseBoatTypes.fir.getChestItem()).input(Blocks.CHEST).input(TraverseBoatTypes.fir.getItem()).group("chest_boat").criterion("has_boat", conditionsFromTag(ItemTags.BOATS)).offerTo(exporter);
 
 		offerSingleOutputShapelessRecipe(exporter, TraverseBlocks.FIR_BUTTON, TraverseBlocks.FIR_PLANKS, "wooden_button");
 

@@ -49,6 +49,6 @@ public class TraverseBlockLootTableProvider extends BlockLootTableGenerator {
 
 	@Override
 	protected Iterable<Block> getKnownBlocks() {
-		return TraverseBlocks.BLOCKS.values();
+		return TraverseBlocks.BLOCKS;
 	}
 }

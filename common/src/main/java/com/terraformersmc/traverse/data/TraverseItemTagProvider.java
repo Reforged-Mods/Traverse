@@ -18,7 +18,7 @@ public class TraverseItemTagProvider extends ItemTagProvider {
 	@Override
 	protected void configure() {
 		this.getOrCreateTagBuilder(ItemTags.BOATS)
-			.add(TraverseBoatTypes.fir.item());
+			.add(TraverseBoatTypes.fir.getItem());
 
 		this.getOrCreateTagBuilder(ItemTags.CHEST_BOATS)
 			.add(TraverseBoatTypes.fir.getChestItem());

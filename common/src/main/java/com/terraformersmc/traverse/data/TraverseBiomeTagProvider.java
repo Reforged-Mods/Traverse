@@ -59,7 +59,7 @@ public class TraverseBiomeTagProvider extends BiomeTagProvider {
 		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), Tags.Biomes.IS_PLAINS.id()))
 			.add(TraverseBiomes.FLATLANDS);
 
-		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), Tags.Biomes.IS_OVERWORLD.id()))
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.IS_OVERWORLD.id()))
 			.add(TraverseBiomes.AUTUMNAL_WOODS)
 			.add(TraverseBiomes.CONIFEROUS_FOREST)
 			.add(TraverseBiomes.DESERT_SHRUBLAND)
@@ -68,7 +68,7 @@ public class TraverseBiomeTagProvider extends BiomeTagProvider {
 			.add(TraverseBiomes.SNOWY_CONIFEROUS_FOREST)
 			.add(TraverseBiomes.WOODLANDS);
 
-		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.SNOWY.id()))
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), Tags.Biomes.IS_SNOWY.id()))
 			.add(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
 
 		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), Tags.Biomes.IS_SWAMP.id()))

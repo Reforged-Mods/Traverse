@@ -95,8 +95,7 @@ public class TraverseBiomes {
 	public static void register() {
 		for (RegistryKey<Biome> key : BIOMES.keySet()) {
 			Biome biome = BIOMES.get(key);
-			biome.setRegistryName(key.getValue());
-			ForgeRegistries.BIOMES.register(biome);
+			ForgeRegistries.BIOMES.register(key.getValue(), biome);
 			Traverse.LOGGER.debug("TraverseBiomes.register: '" + key.getValue() + "' received ID: " + BuiltinRegistries.BIOME.getRawId(BIOMES.get(key)));
 		}
 	}
