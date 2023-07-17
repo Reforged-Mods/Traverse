@@ -10,6 +10,8 @@ import net.minecraft.client.render.RenderLayers;
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.util.Identifier;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -18,8 +20,10 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class TraverseClient {
 
 	public TraverseClient(){
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
-		registerEntityRenderers();
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+			FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+			registerEntityRenderers();
+		});
 	}
 
 	private void clientSetup(FMLClientSetupEvent event){
