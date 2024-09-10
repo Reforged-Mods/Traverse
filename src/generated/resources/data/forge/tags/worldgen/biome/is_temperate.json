@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "traverse:autumnal_woods",
+    "traverse:coniferous_forest",
+    "traverse:flatlands",
+    "traverse:lush_swamp",
+    "traverse:woodlands"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "traverse:coniferous_forest",
+    "traverse:flatlands",
+    "traverse:snowy_coniferous_forest",
+    "traverse:woodlands"
+  ]
+}
