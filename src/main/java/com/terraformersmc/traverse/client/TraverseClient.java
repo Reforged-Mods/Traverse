@@ -16,14 +16,11 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-@Mod(Traverse.MOD_ID + "_client")
 public class TraverseClient {
 
 	public TraverseClient(){
-		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-			FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
-			registerEntityRenderers();
-		});
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+		registerEntityRenderers();
 	}
 
 	private void clientSetup(FMLClientSetupEvent event){

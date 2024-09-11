@@ -2,18 +2,22 @@ package com.terraformersmc.traverse;
 
 import com.terraformersmc.traverse.biome.TraverseBiomes;
 import com.terraformersmc.traverse.block.TraverseBlocks;
+import com.terraformersmc.traverse.client.TraverseClient;
 import com.terraformersmc.traverse.config.TraverseConfigManager;
 import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
 import com.terraformersmc.traverse.feature.placer.TraversePlacerTypes;
 import com.terraformersmc.traverse.item.TraverseBoatTypes;
 import com.terraformersmc.traverse.item.TraverseItems;
 import com.terraformersmc.traverse.villager.TraverseVillagerTypes;
+import com.terraformersmc.traverse.worldgen.TraverseWorldgen;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -25,7 +29,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 
-@Mod(Traverse.MOD_ID + "_common")
+@Mod(Traverse.MOD_ID)
 public class Traverse {
 	public static final String MOD_ID = "traverse";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
@@ -40,6 +44,8 @@ public class Traverse {
 		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 		eventBus.addListener(this::commonLoad);
 		eventBus.register(this);
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> TraverseClient::new);
+		new TraverseWorldgen();
 	}
 
 	@SubscribeEvent
