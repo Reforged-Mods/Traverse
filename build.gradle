@@ -24,7 +24,6 @@ loom {
 		dataGen {
 			mod "traverse"
 		}
-		mixinConfigs = ["mixins.traverse-common.json"]
 	}
 }
 
