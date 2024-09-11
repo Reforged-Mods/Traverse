@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "traverse:desert_shrubland",
-    "traverse:flatlands",
-    "traverse:lush_swamp"
-  ]
-}
