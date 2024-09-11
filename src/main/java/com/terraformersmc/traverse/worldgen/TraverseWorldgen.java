@@ -6,7 +6,6 @@ import com.terraformersmc.traverse.biomegen.TraverseTerraBlenderGeneration;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod(Traverse.MOD_ID + "_worldgen")
 public class TraverseWorldgen {
 	public TraverseWorldgen(){
 		onInitialize();

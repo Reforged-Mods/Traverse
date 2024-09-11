@@ -17,7 +17,7 @@ loom {
 			data()
 		}
 	}
-	//accessWidenerPath = file("src/main/resources/traverse.accesswidener")
+	accessWidenerPath = file("src/main/resources/traverse.accesswidener")
 	forge {
 		convertAccessWideners = true
 		extraAccessWideners.add("traverse.accesswidener")
