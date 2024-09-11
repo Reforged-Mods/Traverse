@@ -8,7 +8,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
-@Mod.EventBusSubscriber(modid = Traverse.MOD_ID + "_common", bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = Traverse.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class TraverseDatagen {
 	public static void onInitializeDataGenerator(DataGenerator dataGenerator, ExistingFileHelper helper) {
 		dataGenerator.addProvider(new TraverseBiomeTagProvider(dataGenerator, helper));
